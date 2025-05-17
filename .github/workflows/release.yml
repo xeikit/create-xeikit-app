@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version type（default: auto）'
+        required: false
+        type: choice
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+        default: 'auto'
+
+env:
+  NODE_VERSION: 22.15.1
+  PNPM_VERSION: 10.11.0
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js and install dependencies
+        uses: ./.github/actions/node-install
+        with:
+          pnpm-version: ${{ env.PNPM_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Execute build
+        run: pnpm build
+
+      - name: Configure Git
+        run: |
+          git config --local user.name 'XeicuLy'
+          git config --local user.email '106128913+XeicuLy@users.noreply.github.com'
+
+      - name: Release (auto)
+        if: inputs.version_type == 'auto'
+        run: pnpm release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release (manual)
+        if: inputs.version_type != 'auto'
+        run: npx changelogen --release --push --${{ inputs.version_type }} && pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
