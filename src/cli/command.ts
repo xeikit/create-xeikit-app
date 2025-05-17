@@ -81,6 +81,13 @@ export const mainCommand = defineCommand({
 
     await initializeGitIfRequested(args.gitInit, template.dir);
 
-    consola.log(`\n✨ Starter project has been created with the \`${template.source}\` template.`);
+    consola.log(`\n🎉 Starter project has been created with the \`${template.source}\` template.`);
+    consola.log('\n🚀 Next steps:\n');
+    consola.log(`cd ${colors.cyan(projectDir)}`);
+    if (!shouldInstall) {
+      consola.log(`${colors.cyan(selectedPackageManager)} install`);
+    }
+    consola.log(`${colors.cyan(selectedPackageManager)} run dev`);
+    consola.log(`\n🎮 Happy coding! ${colors.dim('(Press Ctrl+C to stop the dev server)')}`);
   },
 });
