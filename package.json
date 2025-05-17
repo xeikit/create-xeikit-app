@@ -1,7 +1,7 @@
 {
   "name": "create-xeikit-app",
   "type": "module",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "XeicuLy",
   "description": "CLI tool for scaffolding projects with xeikit/starter templates.",
   "keywords": ["cli"],
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/xeikit/create-xeikit-app.git"
   },
   "scripts": {
+    "release": "pnpm lint:fix && pnpm build && changelogen --release --push",
     "biome": "biome check .",
     "biome:fix": "biome check --write .",
     "prettier": "prettier --check .",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "changelogen": "0.6.1",
     "husky": "9.1.7",
     "lint-staged": "16.0.0",
     "prettier": "3.5.3",
