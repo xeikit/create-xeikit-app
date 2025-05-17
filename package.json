@@ -15,12 +15,14 @@
     "biome:fix": "biome check --write .",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "lint": "pnpm biome && pnpm prettier",
-    "lint:fix": "pnpm biome:fix && pnpm prettier:fix"
+    "typecheck": "tsc --noEmit",
+    "lint": "pnpm biome && pnpm prettier && pnpm typecheck",
+    "lint:fix": "pnpm biome:fix && pnpm prettier:fix && pnpm typecheck"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "typescript": "5.8.3"
   },
   "packageManager": "pnpm@10.11.0",
   "volta": {
