@@ -4,15 +4,27 @@
   "version": "1.0.0",
   "author": "XeicuLy",
   "description": "CLI tool for scaffolding projects with xeikit/starter templates.",
-  "keywords": ["cli"],
+  "keywords": ["cli", "xeikit"],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xeikit/create-xeikit-app.git"
   },
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.mts", "default": "./dist/index.mjs" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["bin", "dist"],
+  "bin": { "create-xeikit-app": "./bin/cli.mjs" },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
+    "command": "jiti bin/cli.mjs",
     "release": "pnpm lint:fix && pnpm build && changelogen --release --push",
     "biome": "biome check .",
     "biome:fix": "biome check --write .",
@@ -23,10 +35,22 @@
     "lint:fix": "pnpm biome:fix && pnpm prettier:fix && pnpm typecheck",
     "prepare": "husky"
   },
+  "dependencies": {
+    "citty": "0.1.6",
+    "consola": "3.4.2",
+    "giget": "2.0.0",
+    "nypm": "0.6.0",
+    "pathe": "2.0.3",
+    "pkg-types": "2.1.0",
+    "std-env": "3.9.0",
+    "tinyexec": "1.0.1"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@types/node": "22.15.18",
     "changelogen": "0.6.1",
     "husky": "9.1.7",
+    "jiti": "2.4.2",
     "lint-staged": "16.0.0",
     "prettier": "3.5.3",
     "typescript": "5.8.3",
