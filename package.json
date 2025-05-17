@@ -11,6 +11,8 @@
     "url": "git+https://github.com/xeikit/create-xeikit-app.git"
   },
   "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
     "release": "pnpm lint:fix && pnpm build && changelogen --release --push",
     "biome": "biome check .",
     "biome:fix": "biome check --write .",
@@ -27,7 +29,8 @@
     "husky": "9.1.7",
     "lint-staged": "16.0.0",
     "prettier": "3.5.3",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "unbuild": "3.5.0"
   },
   "lint-staged": {
     "**/*.{css,js,ts,cjs,mjs,cts,mts,jsx,tsx,json,jsonc}": ["biome check --write --no-errors-on-unmatched"],
