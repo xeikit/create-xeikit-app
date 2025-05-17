@@ -4,16 +4,23 @@
   "version": "0.1.0",
   "author": "XeicuLy",
   "description": "CLI tool for scaffolding projects with xeikit/starter templates.",
-  "keywords": [
-    "cli"
-  ],
+  "keywords": ["cli"],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xeikit/create-xeikit-app.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "biome": "biome check .",
+    "biome:fix": "biome check --write .",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint": "pnpm biome && pnpm prettier",
+    "lint:fix": "pnpm biome:fix && pnpm prettier:fix"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "prettier": "3.5.3"
   },
   "packageManager": "pnpm@10.11.0",
   "volta": {
