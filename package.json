@@ -17,12 +17,19 @@
     "prettier:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "lint": "pnpm biome && pnpm prettier && pnpm typecheck",
-    "lint:fix": "pnpm biome:fix && pnpm prettier:fix && pnpm typecheck"
+    "lint:fix": "pnpm biome:fix && pnpm prettier:fix && pnpm typecheck",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "husky": "9.1.7",
+    "lint-staged": "16.0.0",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
+  },
+  "lint-staged": {
+    "**/*.{css,js,ts,cjs,mjs,cts,mts,jsx,tsx,json,jsonc}": ["biome check --write --no-errors-on-unmatched"],
+    "**/*.{md,html,yaml,yml}": ["prettier --write"]
   },
   "packageManager": "pnpm@10.11.0",
   "volta": {
