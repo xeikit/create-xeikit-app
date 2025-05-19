@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "author": "XeicuLy",
   "description": "CLI tool for scaffolding projects with xeikit/starter templates.",
-  "keywords": ["cli", "xeikit"],
+  "keywords": [
+    "cli",
+    "xeikit"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,15 +15,26 @@
   },
   "exports": {
     ".": {
-      "import": { "types": "./dist/index.d.mts", "default": "./dist/index.mjs" },
-      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["bin", "dist"],
-  "bin": { "create-xeikit-app": "./bin/cli.mjs" },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "bin": {
+    "create-xeikit-app": "./bin/cli.mjs"
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -59,8 +73,12 @@
     "unbuild": "3.5.0"
   },
   "lint-staged": {
-    "**/*.{css,js,ts,cjs,mjs,cts,mts,jsx,tsx,json,jsonc}": ["biome check --write --no-errors-on-unmatched"],
-    "**/*.{md,html,yaml,yml}": ["prettier --write"]
+    "**/*.{css,js,ts,cjs,mjs,cts,mts,jsx,tsx}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "**/*.{md,html,yaml,yml,json,jsonc}": [
+      "prettier --write"
+    ]
   },
   "packageManager": "pnpm@10.11.0",
   "volta": {

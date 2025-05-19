@@ -47,9 +47,7 @@
   },
   "json": {
     "formatter": {
-      "enabled": true,
-      "lineWidth": 120,
-      "indentStyle": "space"
+      "enabled": false
     },
     "linter": {
       "enabled": true
