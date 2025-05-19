@@ -34,5 +34,3 @@ logs
 **/*.mts
 **/*.jsx
 **/*.tsx
-**/*.json
-**/*.jsonc
