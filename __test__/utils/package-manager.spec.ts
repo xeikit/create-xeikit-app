@@ -1,11 +1,18 @@
 import consola from 'consola';
 import { installDependencies } from 'nypm';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { isErr, isOk } from '../../src/types/result';
 import {
   confirmDependenciesInstallation,
+  createInstallationConfig,
+  createPackageManagerSelectOptions,
   detectCurrentPackageManager,
   installDependenciesIfRequested,
+  installDependenciesWithResult,
+  parsePackageManagerFromUserAgent,
   selectPackageManager,
+  validateInstallationPromptResult,
+  validatePackageManagerArg,
 } from '../../src/utils/package-manager';
 
 const { promptMock, installDependenciesMock } = vi.hoisted(() => ({
@@ -181,6 +188,131 @@ describe('src/utils/package-manager.ts', () => {
       promptMock.mockRejectedValue(new Error('Prompt cancelled'));
 
       await expect(selectPackageManager()).rejects.toThrow('process.exit unexpectedly called with "1"');
+    });
+  });
+
+  describe('parsePackageManagerFromUserAgent', () => {
+    test('parses npm from user agent string', () => {
+      expect(parsePackageManagerFromUserAgent('npm/10.9.2')).toBe('npm');
+    });
+
+    test('parses yarn from user agent string', () => {
+      expect(parsePackageManagerFromUserAgent('yarn/1.22.19')).toBe('yarn');
+    });
+
+    test('parses pnpm from user agent string', () => {
+      expect(parsePackageManagerFromUserAgent('pnpm/10.11.0')).toBe('pnpm');
+    });
+
+    test('parses bun from user agent string', () => {
+      expect(parsePackageManagerFromUserAgent('bun/1.2.14')).toBe('bun');
+    });
+
+    test('parses deno from user agent string', () => {
+      expect(parsePackageManagerFromUserAgent('deno/2.3.3')).toBe('deno');
+    });
+
+    test('returns undefined for unknown package manager', () => {
+      expect(parsePackageManagerFromUserAgent('unknown/1.0.0')).toBe(undefined);
+    });
+  });
+
+  describe('validatePackageManagerArg', () => {
+    test('returns error for empty argument', () => {
+      const result = validatePackageManagerArg();
+      expect(isErr(result)).toBe(true);
+      if (isErr(result)) {
+        expect(result.error).toBe('Package manager argument is empty');
+      }
+    });
+
+    test('returns error for invalid package manager', () => {
+      const result = validatePackageManagerArg('invalid');
+      expect(isErr(result)).toBe(true);
+      if (isErr(result)) {
+        expect(result.error).toBe('Invalid package manager: invalid');
+      }
+    });
+
+    test('returns success for valid package manager', () => {
+      const result = validatePackageManagerArg('npm');
+      expect(isOk(result)).toBe(true);
+      if (isOk(result)) {
+        expect(result.data).toBe('npm');
+      }
+    });
+  });
+
+  describe('createPackageManagerSelectOptions', () => {
+    test('creates options without current package manager', () => {
+      const options = createPackageManagerSelectOptions();
+      expect(options).toHaveLength(5);
+      expect(options[0]).toEqual({ label: 'npm', value: 'npm', hint: undefined });
+    });
+
+    test('creates options with current package manager hint', () => {
+      const options = createPackageManagerSelectOptions('pnpm');
+      const pnpmOption = options.find((option) => typeof option === 'object' && option.value === 'pnpm');
+      expect(pnpmOption && typeof pnpmOption === 'object' ? pnpmOption.hint : undefined).toBe('current');
+    });
+  });
+
+  describe('validateInstallationPromptResult', () => {
+    test('returns success for boolean true', () => {
+      const result = validateInstallationPromptResult(true);
+      expect(isOk(result)).toBe(true);
+      if (isOk(result)) {
+        expect(result.data).toBe(true);
+      }
+    });
+
+    test('returns success for boolean false', () => {
+      const result = validateInstallationPromptResult(false);
+      expect(isOk(result)).toBe(true);
+      if (isOk(result)) {
+        expect(result.data).toBe(false);
+      }
+    });
+
+    test('returns error for non-boolean value', () => {
+      const result = validateInstallationPromptResult('yes');
+      expect(isErr(result)).toBe(true);
+      if (isErr(result)) {
+        expect(result.error).toBe('Please specify whether to install dependencies.');
+      }
+    });
+  });
+
+  describe('createInstallationConfig', () => {
+    test('creates correct installation configuration', () => {
+      const config = createInstallationConfig('/test/dir', 'npm');
+      expect(config).toEqual({
+        cwd: '/test/dir',
+        packageManager: {
+          name: 'npm',
+          command: 'npm',
+        },
+      });
+    });
+  });
+
+  describe('installDependenciesWithResult', () => {
+    test('returns success on successful installation', async () => {
+      installDependenciesMock.mockResolvedValue(undefined);
+
+      const result = await installDependenciesWithResult('/test/dir', 'npm');
+      expect(isOk(result)).toBe(true);
+    });
+
+    test('returns error on installation failure', async () => {
+      const error = new Error('Installation failed');
+      installDependenciesMock.mockRejectedValue(error);
+
+      const result = await installDependenciesWithResult('/test/dir', 'npm');
+      expect(isErr(result)).toBe(true);
+      if (isErr(result)) {
+        expect(result.error).toBe(error);
+      }
     });
   });
 });
