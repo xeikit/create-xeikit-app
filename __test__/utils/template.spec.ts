@@ -1,6 +1,4 @@
-import consola from 'consola';
-import { afterEach, describe, expect, test, vi } from 'vitest';
-import { DEFAULT_REGISTRY, TEMPLATE_OPTIONS } from '../../src/utils/constants';
+import { DEFAULT_REGISTRY, TEMPLATE_OPTIONS } from '@/utils/constants';
 import {
   downloadTemplateAndHandleErrors,
   downloadTemplateWithResult,
@@ -8,7 +6,9 @@ import {
   selectTemplate,
   validateTemplateArg,
   validateTemplatePromptResult,
-} from '../../src/utils/template';
+} from '@/utils/template';
+import consola from 'consola';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
 const { promptMock, downloadTemplateMock } = vi.hoisted(() => ({
   promptMock: vi.fn(),

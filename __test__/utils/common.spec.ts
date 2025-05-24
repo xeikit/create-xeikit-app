@@ -1,4 +1,3 @@
-import { afterEach, describe, expect, test, vi } from 'vitest';
 import {
   checkDirectoryExists,
   createDirectoryExistsMessage,
@@ -6,7 +5,8 @@ import {
   resolvePath,
   validateDirectoryDoesNotExist,
   verifyDirectoryDoesNotExist,
-} from '../../src/utils/common';
+} from '@/utils/common';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 
 const { existsSyncMock, consolaErrorMock } = vi.hoisted(() => ({
   existsSyncMock: vi.fn(),
@@ -105,7 +105,7 @@ describe('src/utils/common.ts', () => {
       expect(consolaErrorMock).toHaveBeenCalledTimes(1);
 
       // Verify the error message contains the expected text, ignoring color formatting
-      const errorMessage = consolaErrorMock.mock.calls[0][0];
+      const errorMessage = consolaErrorMock.mock.calls[0]?.[0];
       expect(errorMessage).toContain('The directory');
       expect(errorMessage).toContain(testPath);
       expect(errorMessage).toContain('already exists. Please choose a different directory.');

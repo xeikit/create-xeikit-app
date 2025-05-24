@@ -11,8 +11,12 @@
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "__test__", "__e2e__"],
   "exclude": ["vendor"]
 }

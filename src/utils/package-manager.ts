@@ -1,9 +1,9 @@
+import type { Result } from '@/types/result';
+import { Err, Ok, isOk } from '@/types/result';
+import { handleError } from '@/utils/common';
+import { PACKAGE_MANAGER_OPTIONS } from '@/utils/constants';
 import consola, { type SelectPromptOptions } from 'consola';
 import { type PackageManagerName, installDependencies } from 'nypm';
-import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
-import { handleError } from './common';
-import { PACKAGE_MANAGER_OPTIONS } from './constants';
 
 /**
  * Extracts the package manager name from a user agent string.

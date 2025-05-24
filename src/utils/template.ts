@@ -1,9 +1,9 @@
+import type { Result } from '@/types/result';
+import { Err, Ok, isOk } from '@/types/result';
+import { handleError } from '@/utils/common';
+import { DEFAULT_REGISTRY, DEFAULT_TEMPLATE_NAME, TEMPLATE_OPTIONS } from '@/utils/constants';
 import consola from 'consola';
 import { type DownloadTemplateResult, downloadTemplate } from 'giget';
-import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
-import { handleError } from './common';
-import { DEFAULT_REGISTRY, DEFAULT_TEMPLATE_NAME, TEMPLATE_OPTIONS } from './constants';
 
 /**
  * Validates a template argument to ensure it's not empty or undefined.

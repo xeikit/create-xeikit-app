@@ -1,7 +1,4 @@
-import consola from 'consola';
-import { installDependencies } from 'nypm';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { isErr, isOk } from '../../src/types/result';
+import { isErr, isOk } from '@/types/result';
 import {
   confirmDependenciesInstallation,
   createInstallationConfig,
@@ -13,7 +10,10 @@ import {
   selectPackageManager,
   validateInstallationPromptResult,
   validatePackageManagerArg,
-} from '../../src/utils/package-manager';
+} from '@/utils/package-manager';
+import consola from 'consola';
+import { installDependencies } from 'nypm';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const { promptMock, installDependenciesMock } = vi.hoisted(() => ({
   promptMock: vi.fn(),
@@ -34,7 +34,7 @@ vi.mock('nypm', () => ({
   installDependencies: installDependenciesMock,
 }));
 
-vi.mock('../../src/utils/common', () => ({
+vi.mock('@/utils/common', () => ({
   handleError: vi.fn((error) => {
     throw error;
   }),

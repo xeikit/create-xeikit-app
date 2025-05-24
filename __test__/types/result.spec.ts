@@ -1,6 +1,6 @@
+import type { Result } from '@/types/result';
+import { Err, Ok, chain, isErr, isOk, map, mapErr, unwrap, unwrapOr } from '@/types/result';
 import { describe, expect, test } from 'vitest';
-import type { Result } from '../../src/types/result';
-import { Err, Ok, chain, isErr, isOk, map, mapErr, unwrap, unwrapOr } from '../../src/types/result';
 
 describe('Result type utilities', () => {
   describe('Ok and Err constructors', () => {
