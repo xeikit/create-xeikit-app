@@ -248,7 +248,9 @@ describe('mainCommand E2E Tests', () => {
       );
 
       // Should show install instruction when dependencies aren't installed
-      expect(consola.log).toHaveBeenCalledWith(expect.stringContaining('npm install'));
+      // Check if any of the consola.log calls contains "npm install" - accounting for color formatting
+      const consolaLogCalls = consola.log.mock.calls.map((call) => call[0]);
+      expect(consolaLogCalls.some((call) => call.includes('npm install'))).toBe(true);
     });
 
     test('should handle git initialization opt-out', async () => {
