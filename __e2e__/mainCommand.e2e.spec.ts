@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { mainCommand } from '@/cli/command';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { mainCommand } from '../src/cli/command';
 
 // Hoisted mocks for better test isolation
 const {
@@ -36,27 +36,27 @@ const {
 }));
 
 // Module mocks with clear separation of concerns
-vi.mock('../src/utils/common', () => ({
+vi.mock('@/utils/common', () => ({
   resolvePath,
   verifyDirectoryDoesNotExist,
 }));
 
-vi.mock('../src/cli/prompts', () => ({
+vi.mock('@/cli/prompts', () => ({
   getProjectDirectory,
 }));
 
-vi.mock('../src/utils/template', () => ({
+vi.mock('@/utils/template', () => ({
   selectTemplate,
   downloadTemplateAndHandleErrors,
 }));
 
-vi.mock('../src/utils/package-manager', () => ({
+vi.mock('@/utils/package-manager', () => ({
   selectPackageManager,
   confirmDependenciesInstallation,
   installDependenciesIfRequested,
 }));
 
-vi.mock('../src/utils/git', () => ({
+vi.mock('@/utils/git', () => ({
   initializeGitIfRequested,
 }));
 
