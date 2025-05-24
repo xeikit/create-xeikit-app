@@ -1,9 +1,9 @@
 import { existsSync } from 'node:fs';
-import type { Result } from '@/types/result';
-import { Err, Ok } from '@/types/result';
 import consola from 'consola';
 import { colors } from 'consola/utils';
 import { relative, resolve } from 'pathe';
+import type { Result } from '../types/result';
+import { Err, Ok } from '../types/result';
 
 /**
  * Creates a user-friendly error message when a directory already exists.

@@ -1,20 +1,20 @@
-import { getProjectDirectory } from '@/cli/prompts';
-import type { Result } from '@/types/result';
-import { Err, Ok } from '@/types/result';
-import { resolvePath, verifyDirectoryDoesNotExist } from '@/utils/common';
-import { initializeGitIfRequested } from '@/utils/git';
-import {
-  confirmDependenciesInstallation,
-  installDependenciesIfRequested,
-  selectPackageManager,
-} from '@/utils/package-manager';
-import { downloadTemplateAndHandleErrors, selectTemplate } from '@/utils/template';
 import { type ArgDef, defineCommand } from 'citty';
 import consola from 'consola';
 import { colors } from 'consola/utils';
 import { relative } from 'pathe';
 import { hasTTY } from 'std-env';
 import { description, name, version } from '../../package.json';
+import type { Result } from '../types/result';
+import { Err, Ok } from '../types/result';
+import { resolvePath, verifyDirectoryDoesNotExist } from '../utils/common';
+import { initializeGitIfRequested } from '../utils/git';
+import {
+  confirmDependenciesInstallation,
+  installDependenciesIfRequested,
+  selectPackageManager,
+} from '../utils/package-manager';
+import { downloadTemplateAndHandleErrors, selectTemplate } from '../utils/template';
+import { getProjectDirectory } from './prompts';
 
 /**
  * Configuration interface for project creation.

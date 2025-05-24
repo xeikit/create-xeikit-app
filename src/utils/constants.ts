@@ -1,4 +1,4 @@
-import type { TemplateOptions } from '@/types/cli';
+import type { TemplateOptions } from '../types/cli';
 
 /**
  * Default registry URL for downloading project templates.
