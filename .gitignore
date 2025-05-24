@@ -5,6 +5,7 @@
 dist
 *.tgz
 temp
+coverage
 
 # Node dependencies
 node_modules

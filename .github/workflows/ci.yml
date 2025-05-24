@@ -42,5 +42,8 @@ jobs:
       - name: Execute TypeCheck
         run: pnpm typecheck
 
+      - name: Execute Test
+        run: pnpm test:ci
+
       - name: Execute Build
         run: pnpm build
