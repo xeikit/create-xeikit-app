@@ -39,7 +39,7 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "command": "jiti bin/cli.mjs",
-    "release": "pnpm lint:fix && pnpm build && changelogen --release --push",
+    "release": "pnpm lint:fix && pnpm test:ci && pnpm build && changelogen --release --push && pnpm publish",
     "biome": "biome check .",
     "biome:fix": "biome check --write .",
     "biome:ci": "biome ci .",
