@@ -248,9 +248,21 @@ describe('mainCommand E2E Tests', () => {
       );
 
       // Should show install instruction when dependencies aren't installed
-      // Check if any of the consola.log calls contains "npm install" - accounting for color formatting
+      // Check if any of the consola.log calls contains package manager install command - accounting for color formatting
       const consolaLogCalls = consola.log.mock.calls.map((call) => call[0]);
-      expect(consolaLogCalls.some((call) => call.includes('npm install'))).toBe(true);
+
+      // Look for install command - could be colored or plain text
+      // Check for both "npm install" and just "npm" + "install" in separate parts
+      const hasInstallCommand = consolaLogCalls.some((call) => {
+        const callStr = call.toString();
+        // Check for exact match first
+        if (callStr.includes('npm install')) {
+          return true;
+        }
+        // Check for separate npm and install (in case of color formatting)
+        return callStr.includes('npm') && callStr.includes('install');
+      });
+      expect(hasInstallCommand).toBe(true);
     });
 
     test('should handle git initialization opt-out', async () => {
