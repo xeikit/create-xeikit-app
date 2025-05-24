@@ -52,6 +52,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:coverage": "vitest --coverage",
+    "test:ci": "vitest --run --coverage",
     "prepare": "husky"
   },
   "dependencies": {
