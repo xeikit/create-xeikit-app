@@ -4,7 +4,7 @@ import type { TemplateOptions } from '../types/cli';
  * Default registry URL for downloading project templates.
  * Points to the official xeikit starter templates repository.
  */
-export const DEFAULT_REGISTRY = 'https://raw.githubusercontent.com/xeikit/starter/templates/templates' as const;
+export const DEFAULT_REGISTRY = 'https://raw.githubusercontent.com/xeikit/starter-templates/main/templates' as const;
 
 /**
  * Default template name used when no template is specified.
