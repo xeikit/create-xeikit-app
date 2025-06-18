@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.1.0...v1.2.0)
+
+### ✨ Enhancements
+
+- Change DEFAULT_REGISTRY URL to point to the official xeikit starter templates repository ([4b6e739](https://github.com/xeikit/create-xeikit-app/commit/4b6e739))
+
+### 🔧 Chore
+
+- Update release script to include testing before publishing ([63438c2](https://github.com/xeikit/create-xeikit-app/commit/63438c2))
+
+### ❤️ Contributors
+
+- XeicuLy ([@XeicuLy](https://github.com/XeicuLy))
+
 ## v1.1.0
 
 [compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.0.0...v1.1.0)
