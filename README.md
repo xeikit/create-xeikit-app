@@ -2,7 +2,7 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 
-## ✨ Usage
+## 🚀 Quick Start
 
 You can use [these templates](https://github.com/xeikit/starter-templates/tree/main/packages) to create a new project by running the following command:
 
@@ -10,11 +10,19 @@ You can use [these templates](https://github.com/xeikit/starter-templates/tree/m
 npx create-xeikit-app
 ```
 
-This will prompt you to select a template and then create a new project using that template.
+Follow the interactive prompts to select your preferred template and get coding immediately!
 
 ## 📄 License
 
-[MIT](./LICENSE) License © 2025–Present [XeicuLy](https://github.com/XeicuLy)
+This project is licensed under the [MIT License](./LICENSE).
+
+## 🔗 Related
+
+- [starter-templates](https://github.com/xeikit/starter-templates) - Starter Templates
+
+---
+
+Made with ❤️ by the [xeikit](https://github.com/xeikit) team
 
 <!-- Badges -->
 
