@@ -78,13 +78,13 @@ jobs:
       - name: Release (auto)
         if: inputs.version_type == 'auto'
         run: |
-          echo "Starting actual release process..."
+          echo "Starting release process..."
           if [ "${{ inputs.skip_validation }}" = "true" ]; then
             echo "Running release with validation skipped..."
             pnpm release:enhanced --quick --skip-build --skip-validation
           else
             echo "Running release with full validation..."
-            pnpm release:enhanced --quick --skip-build --skip-validation
+            pnpm release:enhanced --quick --skip-build
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -99,7 +99,7 @@ jobs:
             pnpm release:enhanced --quick --skip-build --skip-validation ${{ inputs.version_type }}
           else
             echo "Running release with full validation..."
-            pnpm release:enhanced --quick --skip-build --skip-validation ${{ inputs.version_type }}
+            pnpm release:enhanced --quick --skip-build ${{ inputs.version_type }}
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -125,5 +125,3 @@ jobs:
           echo ""
           echo "If dry run validation failed, fix the issues and try again."
           echo "If you need to skip validation for urgent releases, use the 'Skip validation' option."
-          echo "3. Ensure npm credentials are correctly configured"
-          echo "4. Check if the working directory is clean"

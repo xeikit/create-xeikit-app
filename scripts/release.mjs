@@ -21,7 +21,7 @@ const skipTests = args.includes('--skip-tests');
 const skipLint = args.includes('--skip-lint');
 const skipBuild = args.includes('--skip-build');
 const skipValidation = args.includes('--skip-validation');
-const releaseType = args.find((arg) => RELEASE_TYPES.includes(arg));
+const releaseType = args.find((arg) => RELEASE_TYPES.includes(arg)) || 'patch';
 
 // Utility functions
 function getPackageInfo() {
@@ -146,10 +146,8 @@ async function generateChangelog() {
 
   const changelogArgs = [];
 
-  // Add release type if specified
-  if (releaseType) {
-    changelogArgs.push(`--${releaseType}`);
-  }
+  // Add release type
+  changelogArgs.push(`--${releaseType}`);
 
   // Add release flag (includes bump and git operations)
   changelogArgs.push('--release');
@@ -193,10 +191,7 @@ async function showReleaseSummary() {
   console.log(`Skip Lint: ${skipLint ? 'Yes' : 'No'}`);
   console.log(`Skip Build: ${skipBuild ? 'Yes' : 'No'}`);
   console.log(`Skip Validation: ${skipValidation ? 'Yes' : 'No'}`);
-
-  if (releaseType) {
-    console.log(`Release Type: ${releaseType}`);
-  }
+  console.log(`Release Type: ${releaseType}`);
 }
 
 async function confirmRelease() {
@@ -280,7 +275,7 @@ async function quickValidation() {
     // Test basic functionality with a simple dry run
     consola.start('Running quick validation...');
 
-    await x('node', [process.argv[1], '--dry-run', '--quick', '--skip-validation', releaseType || 'patch'], {
+    await x('node', [process.argv[1], '--dry-run', '--quick', '--skip-validation', releaseType], {
       nodeOptions: { stdio: 'pipe' },
       throwOnError: true,
     });
