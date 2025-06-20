@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version_type:
-        description: 'Version type（default: auto）'
+        description: 'Release type: auto (detect changes), patch (1.0.0→1.0.1), minor (1.0.0→1.1.0), major (1.0.0→2.0.0), prerelease (1.0.0→1.0.1-0)'
         required: false
         type: choice
         options:
@@ -12,7 +12,13 @@ on:
           - patch
           - minor
           - major
+          - prerelease
         default: 'auto'
+      skip_validation:
+        description: 'Skip dry run validation'
+        required: false
+        type: boolean
+        default: false
 
 env:
   NODE_VERSION: 22.15.1
@@ -21,6 +27,8 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Only run on main branch
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
       id-token: write
@@ -30,12 +38,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js and install dependencies
         uses: ./.github/actions/node-install
         with:
           pnpm-version: ${{ env.PNPM_VERSION }}
           node-version: ${{ env.NODE_VERSION }}
+
+      - name: Run tests
+        run: pnpm test:ci
 
       - name: Execute build
         run: pnpm build
@@ -45,16 +57,73 @@ jobs:
           git config --local user.name 'XeicuLy'
           git config --local user.email '106128913+XeicuLy@users.noreply.github.com'
 
+      - name: Pre-release validation (dry run)
+        if: inputs.skip_validation != true
+        run: |
+          echo "Running pre-release validation..."
+          if [ "${{ inputs.version_type }}" = "auto" ]; then
+            pnpm release:dry
+          else
+            pnpm release:dry ${{ inputs.version_type }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dry run validation skipped
+        if: inputs.skip_validation == true
+        run: |
+          echo "::warning title=Validation Skipped::Dry run validation has been skipped. This is not recommended for production releases."
+
       - name: Release (auto)
         if: inputs.version_type == 'auto'
-        run: pnpm release
+        run: |
+          echo "Starting actual release process..."
+          if [ "${{ inputs.skip_validation }}" = "true" ]; then
+            echo "Running release with validation skipped..."
+            pnpm release:enhanced --quick --skip-build --skip-validation
+          else
+            echo "Running release with full validation..."
+            pnpm release:enhanced --quick --skip-build --skip-validation
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release (manual)
         if: inputs.version_type != 'auto'
-        run: npx changelogen --release --push --${{ inputs.version_type }} && pnpm publish
+        run: |
+          echo "Starting actual release process for ${{ inputs.version_type }}..."
+          if [ "${{ inputs.skip_validation }}" = "true" ]; then
+            echo "Running release with validation skipped..."
+            pnpm release:enhanced --quick --skip-build --skip-validation ${{ inputs.version_type }}
+          else
+            echo "Running release with full validation..."
+            pnpm release:enhanced --quick --skip-build --skip-validation ${{ inputs.version_type }}
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release success notification
+        if: success()
+        run: |
+          echo "::notice title=Release Successful::🎉 Release completed successfully!"
+          echo "Package has been published to npm and changelog has been updated."
+          echo "Check the release notes at: https://github.com/${{ github.repository }}/releases"
+
+      - name: Release failure notification
+        if: failure()
+        run: |
+          echo "::error title=Release Failed::The release process has failed. Please check the logs above for details."
+          echo "Common solutions:"
+          echo "1. Check if all tests are passing"
+          echo "2. Verify build process is successful"
+          echo "3. Ensure npm credentials are correctly configured"
+          echo "4. Check if the working directory is clean"
+          echo "5. Verify dry run validation passed"
+          echo ""
+          echo "If dry run validation failed, fix the issues and try again."
+          echo "If you need to skip validation for urgent releases, use the 'Skip validation' option."
+          echo "3. Ensure npm credentials are correctly configured"
+          echo "4. Check if the working directory is clean"
