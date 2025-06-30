@@ -37,4 +37,5 @@ export const PACKAGE_MANAGER_OPTIONS = Object.keys(PACKAGE_MANAGERS) as Array<ke
 export const TEMPLATE_OPTIONS = [
   { label: 'Nuxt3', value: 'nuxt3' },
   { label: 'React Router (framework)', value: 'react-router' },
+  { label: 'TanStack Start (Beta)', value: 'tanstack-start' },
 ] satisfies TemplateOptions[];
