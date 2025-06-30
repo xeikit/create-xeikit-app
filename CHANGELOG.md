@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v1.2.1
+
+[compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.2.0...v1.2.1)
+
+### ✨ Enhancements
+
+- Add TanStack Start template option to TEMPLATE_OPTIONS ([aff715e](https://github.com/xeikit/create-xeikit-app/commit/aff715e))
+
+### 📝 Documentation
+
+- Update template URL in README for clarity ([#16](https://github.com/xeikit/create-xeikit-app/pull/16))
+- Update section title from "Usage" to "Quick Start" for clarity ([70cea96](https://github.com/xeikit/create-xeikit-app/commit/70cea96))
+- Add comprehensive release process documentation ([44456e2](https://github.com/xeikit/create-xeikit-app/commit/44456e2))
+
+### 🤖 CI
+
+- Implement enhanced multi-stage release script ([#13](https://github.com/xeikit/create-xeikit-app/pull/13))
+
+### 🎨 Improvements
+
+- Ensure default release type is 'patch' and simplify changelog generation ([badba32](https://github.com/xeikit/create-xeikit-app/commit/badba32))
+
+### ❤️ Contributors
+
+- XeicuLy ([@XeicuLy](https://github.com/XeicuLy))
+
 ## v1.2.0
 
 [compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.1.0...v1.2.0)
