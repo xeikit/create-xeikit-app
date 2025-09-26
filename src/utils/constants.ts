@@ -35,7 +35,6 @@ export const PACKAGE_MANAGER_OPTIONS = Object.keys(PACKAGE_MANAGERS) as Array<ke
  * Each template option contains a display label and corresponding value for template selection.
  */
 export const TEMPLATE_OPTIONS = [
-  { label: 'Nuxt3', value: 'nuxt3' },
-  { label: 'React Router (framework)', value: 'react-router' },
-  { label: 'TanStack Start (Beta)', value: 'tanstack-start' },
+  { label: 'Nuxt4 + Hono', value: 'nuxt4' },
+  { label: 'TanStack Start', value: 'tanstack-start' },
 ] satisfies TemplateOptions[];
