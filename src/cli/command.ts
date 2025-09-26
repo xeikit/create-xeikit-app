@@ -83,7 +83,7 @@ export const displayProjectCreationInfo = (config: ProjectConfig): void => {
  *
  * @example
  * ```typescript
- * const instructions = createFinalInstructions("my-app", false, "npm", "nuxt3");
+ * const instructions = createFinalInstructions("my-app", false, "npm", "nuxt4");
  * console.log(instructions.successMessage); // "🎉 Starter project has been created..."
  * console.log(instructions.installCommand); // "npm install"
  * ```
@@ -114,7 +114,7 @@ export const createFinalInstructions = (
  *
  * @example
  * ```typescript
- * displayFinalInstructions("my-app", false, "npm", "nuxt3");
+ * displayFinalInstructions("my-app", false, "npm", "nuxt4");
  * // Logs success message and next steps including "npm install" command
  * ```
  */
@@ -151,7 +151,7 @@ export const displayFinalInstructions = (
  * const result = await executeProjectCreationWorkflow({
  *   cwd: process.cwd(),
  *   dir: "my-app",
- *   template: "nuxt3",
+ *   template: "nuxt4",
  *   install: true,
  *   gitInit: true,
  *   packageManager: "npm"
@@ -212,7 +212,7 @@ export const executeProjectCreationWorkflow = async (args: {
  * create-xeikit-app
  *
  * # Create a project with specific template and skip installation
- * create-xeikit-app my-app --template nuxt3 --no-install
+ * create-xeikit-app my-app --template 4 --no-install
  *
  * # Create a project with yarn and skip git initialization
  * create-xeikit-app my-app --package-manager yarn --no-git-init
