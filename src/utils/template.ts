@@ -14,8 +14,8 @@ import { DEFAULT_REGISTRY, DEFAULT_TEMPLATE_NAME, TEMPLATE_OPTIONS } from './con
  *
  * @example
  * ```typescript
- * const valid = validateTemplateArg("nuxt3");
- * // Returns: Ok("nuxt3")
+ * const valid = validateTemplateArg("nuxt4");
+ * // Returns: Ok("nuxt4")
  *
  * const invalid = validateTemplateArg("");
  * // Returns: Err("Template argument is empty or undefined")
@@ -41,7 +41,7 @@ export const validateTemplateArg = (templateArg?: string): Result<string, string
  * // Returns: Ok("react-router")
  *
  * const fallback = validateTemplatePromptResult("");
- * // Returns: Ok("nuxt3") - falls back to default
+ * // Returns: Ok("nuxt4") - falls back to default
  *
  * const invalid = validateTemplatePromptResult(null);
  * // Returns: Err("Please specify a template name.")
@@ -98,8 +98,8 @@ export const promptForTemplate = async (): Promise<Result<string, Error>> => {
  * @example
  * ```typescript
  * // With valid argument
- * const template1 = await selectTemplate("nuxt3");
- * // Returns: "nuxt3"
+ * const template1 = await selectTemplate("nuxt4");
+ * // Returns: "nuxt4"
  *
  * // With invalid argument (will prompt user)
  * const template2 = await selectTemplate("");
@@ -134,7 +134,7 @@ export const selectTemplate = async (templateArg?: string): Promise<string> => {
  *
  * @example
  * ```typescript
- * const result = await downloadTemplateWithResult("nuxt3", "./my-project");
+ * const result = await downloadTemplateWithResult("nuxt4", "./my-project");
  * if (isOk(result)) {
  *   console.log(`Downloaded to: ${result.data.dir}`);
  * } else {
@@ -168,7 +168,7 @@ export const downloadTemplateWithResult = async (
  *
  * @example
  * ```typescript
- * const result = await downloadTemplateAndHandleErrors("nuxt3", "./my-project");
+ * const result = await downloadTemplateAndHandleErrors("nuxt4", "./my-project");
  * console.log(`Template downloaded to: ${result.dir}`);
  * // If download fails, this line won't execute (process exits)
  * ```

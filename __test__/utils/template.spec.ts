@@ -59,11 +59,11 @@ describe('src/utils/template.ts', () => {
 
   describe('validateTemplatePromptResult', () => {
     test('returns success for valid string template', () => {
-      const result = validateTemplatePromptResult('nuxt3');
+      const result = validateTemplatePromptResult('nuxt4');
 
       expect(result.success).toBe(true);
       if (result.success) {
-        expect(result.data).toBe('nuxt3');
+        expect(result.data).toBe('nuxt4');
       }
     });
 
@@ -79,13 +79,13 @@ describe('src/utils/template.ts', () => {
 
   describe('promptForTemplate', () => {
     test('returns success result for valid prompt response', async () => {
-      promptMock.mockResolvedValue('nuxt3');
+      promptMock.mockResolvedValue('nuxt4');
 
       const result = await promptForTemplate();
 
       expect(result.success).toBe(true);
       if (result.success) {
-        expect(result.data).toBe('nuxt3');
+        expect(result.data).toBe('nuxt4');
       }
       expect(promptMock).toHaveBeenCalledWith('Choose a template', {
         type: 'select',
@@ -145,11 +145,11 @@ describe('src/utils/template.ts', () => {
     });
 
     test('prompts for template when no argument provided', async () => {
-      promptMock.mockResolvedValue('nuxt3');
+      promptMock.mockResolvedValue('nuxt4');
 
       const result = await selectTemplate();
 
-      expect(result).toBe('nuxt3');
+      expect(result).toBe('nuxt4');
       expect(consola.prompt).toHaveBeenCalledTimes(1);
       expect(consola.prompt).toHaveBeenCalledWith('Choose a template', {
         type: 'select',

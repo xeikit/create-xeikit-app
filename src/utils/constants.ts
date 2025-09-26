@@ -8,9 +8,9 @@ export const DEFAULT_REGISTRY = 'https://raw.githubusercontent.com/xeikit/starte
 
 /**
  * Default template name used when no template is specified.
- * Falls back to the Nuxt3 template for new projects.
+ * Falls back to the Nuxt4 template for new projects.
  */
-export const DEFAULT_TEMPLATE_NAME = 'nuxt3' as const;
+export const DEFAULT_TEMPLATE_NAME = 'nuxt4' as const;
 
 /**
  * Supported package managers for dependency installation.
@@ -35,7 +35,6 @@ export const PACKAGE_MANAGER_OPTIONS = Object.keys(PACKAGE_MANAGERS) as Array<ke
  * Each template option contains a display label and corresponding value for template selection.
  */
 export const TEMPLATE_OPTIONS = [
-  { label: 'Nuxt3', value: 'nuxt3' },
-  { label: 'React Router (framework)', value: 'react-router' },
-  { label: 'TanStack Start (Beta)', value: 'tanstack-start' },
+  { label: 'Nuxt4 + Hono', value: 'nuxt4' },
+  { label: 'TanStack Start', value: 'tanstack-start' },
 ] satisfies TemplateOptions[];
