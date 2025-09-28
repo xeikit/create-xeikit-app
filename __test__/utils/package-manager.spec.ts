@@ -1,3 +1,6 @@
+import consola from 'consola';
+import { installDependencies } from 'nypm';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { isErr, isOk } from '@/types/result';
 import {
   confirmDependenciesInstallation,
@@ -11,9 +14,6 @@ import {
   validateInstallationPromptResult,
   validatePackageManagerArg,
 } from '@/utils/package-manager';
-import consola from 'consola';
-import { installDependencies } from 'nypm';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 const { promptMock, installDependenciesMock } = vi.hoisted(() => ({
   promptMock: vi.fn(),

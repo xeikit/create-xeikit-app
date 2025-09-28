@@ -1,5 +1,5 @@
-import { mainCommand } from '@/cli/command';
 import { describe, expect, test } from 'vitest';
+import { mainCommand } from '@/cli/command';
 import { description, name, version } from '../../package.json';
 
 describe('src/cli/command.ts', () => {

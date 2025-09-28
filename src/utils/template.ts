@@ -1,7 +1,7 @@
 import consola from 'consola';
 import { type DownloadTemplateResult, downloadTemplate } from 'giget';
 import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
+import { Err, isOk, Ok } from '../types/result';
 import { handleError } from './common';
 import { DEFAULT_REGISTRY, DEFAULT_TEMPLATE_NAME, TEMPLATE_OPTIONS } from './constants';
 

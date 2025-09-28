@@ -1,10 +1,10 @@
+import { describe, expect, test, vi } from 'vitest';
 import {
   createProjectDirectoryPromptConfig,
   getProjectDirectory,
   promptForProjectDirectory,
   validateDirectoryArg,
 } from '@/cli/prompts';
-import { describe, expect, test, vi } from 'vitest';
 
 const { promptMock } = vi.hoisted(() => ({
   promptMock: vi.fn(),

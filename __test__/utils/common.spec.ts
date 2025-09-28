@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, test, vi } from 'vitest';
 import {
   checkDirectoryExists,
   createDirectoryExistsMessage,
@@ -6,7 +7,6 @@ import {
   validateDirectoryDoesNotExist,
   verifyDirectoryDoesNotExist,
 } from '@/utils/common';
-import { afterEach, describe, expect, test, vi } from 'vitest';
 
 const { existsSyncMock, consolaErrorMock } = vi.hoisted(() => ({
   existsSyncMock: vi.fn(),
