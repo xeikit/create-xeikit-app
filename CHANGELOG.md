@@ -1,6 +1,25 @@
 # Changelog
 
 
+## v1.2.4
+
+[compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.2.3...v1.2.4)
+
+### 🔧 Chore
+
+- Add vitest run option ([87a2cc9](https://github.com/xeikit/create-xeikit-app/commit/87a2cc9))
+- Update dependencies ([28138e6](https://github.com/xeikit/create-xeikit-app/commit/28138e6))
+- Update linter config ([b07d59e](https://github.com/xeikit/create-xeikit-app/commit/b07d59e))
+- Remove '@biomejs/biome' from onlyBuiltDependencies ([3d2fcab](https://github.com/xeikit/create-xeikit-app/commit/3d2fcab))
+
+### 🤖 CI
+
+- Update Node.js and PNPM versions in release workflow ([35bb574](https://github.com/xeikit/create-xeikit-app/commit/35bb574))
+
+### ❤️ Contributors
+
+- XeicuLy ([@XeicuLy](https://github.com/XeicuLy))
+
 ## v1.2.3
 
 [compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.2.2...v1.2.3)
