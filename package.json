@@ -53,9 +53,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "pnpm biome && pnpm prettier && pnpm typecheck",
     "lint:fix": "pnpm biome:fix && pnpm prettier:fix && pnpm typecheck",
-    "test": "vitest",
+    "test": "vitest run",
     "test:ui": "vitest --ui --coverage",
-    "test:coverage": "vitest --coverage",
+    "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run --coverage",
     "prepare": "husky"
   },
