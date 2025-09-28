@@ -37,4 +37,5 @@ export const PACKAGE_MANAGER_OPTIONS = Object.keys(PACKAGE_MANAGERS) as Array<ke
 export const TEMPLATE_OPTIONS = [
   { label: 'Nuxt4 + Hono', value: 'nuxt4' },
   { label: 'TanStack Start', value: 'tanstack-start' },
+  { label: 'TanStack Start + Hono', value: 'tanstack-start-x-hono' },
 ] satisfies TemplateOptions[];
