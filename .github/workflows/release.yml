@@ -21,8 +21,8 @@ on:
         default: false
 
 env:
-  NODE_VERSION: 22.15.1
-  PNPM_VERSION: 10.11.0
+  NODE_VERSION: 22.20.0
+  PNPM_VERSION: 10.17.1
 
 jobs:
   release:
