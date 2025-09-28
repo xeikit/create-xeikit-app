@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.3
+
+[compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.2.2...v1.2.3)
+
+### ✨ Enhancements
+
+- Add 'TanStack Start + Hono' template option to TEMPLATE_OPTIONS ([bf3a9b8](https://github.com/xeikit/create-xeikit-app/commit/bf3a9b8))
+
+### 🔥 Deletion
+
+- Release step doc ([2b44489](https://github.com/xeikit/create-xeikit-app/commit/2b44489))
+
+### ❤️ Contributors
+
+- XeicuLy ([@XeicuLy](https://github.com/XeicuLy))
+
 ## v1.2.2
 
 [compare changes](https://github.com/xeikit/create-xeikit-app/compare/v1.2.1...v1.2.2)
