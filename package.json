@@ -63,29 +63,29 @@
     "citty": "0.1.6",
     "consola": "3.4.2",
     "giget": "2.0.0",
-    "nypm": "0.6.0",
+    "nypm": "0.6.2",
     "pathe": "2.0.3",
-    "pkg-types": "2.1.0",
+    "pkg-types": "2.3.0",
     "std-env": "3.9.0",
     "tinyexec": "1.0.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.2.4",
     "@commitlint/cli": "19.8.1",
     "@commitlint/types": "19.8.1",
-    "@types/node": "22.15.18",
-    "@vitest/coverage-v8": "3.1.4",
-    "@vitest/ui": "3.1.4",
-    "changelogen": "0.6.1",
+    "@types/node": "24.5.2",
+    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/ui": "3.2.4",
+    "changelogen": "0.6.2",
     "commitlint-config-gitmoji": "2.3.1",
     "husky": "9.1.7",
-    "jiti": "2.4.2",
-    "lint-staged": "16.0.0",
-    "prettier": "3.5.3",
-    "typescript": "5.8.3",
-    "unbuild": "3.5.0",
+    "jiti": "2.6.0",
+    "lint-staged": "16.2.1",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2",
+    "unbuild": "3.6.1",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "3.1.4"
+    "vitest": "3.2.4"
   },
   "lint-staged": {
     "**/*.{css,js,ts,cjs,mjs,cts,mts,jsx,tsx}": [
@@ -95,9 +95,9 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.17.1",
   "volta": {
-    "node": "22.15.1",
-    "pnpm": "10.11.0"
+    "node": "22.20.0",
+    "pnpm": "10.17.1"
   }
 }
