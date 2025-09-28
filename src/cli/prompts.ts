@@ -1,6 +1,6 @@
 import consola from 'consola';
 import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
+import { Err, isOk, Ok } from '../types/result';
 
 /**
  * Validates a directory argument to ensure it's not empty or just whitespace.

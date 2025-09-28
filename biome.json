@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,50 +7,39 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "includes": ["**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}", "!**/*.gen.ts"]
   },
   "formatter": {
     "enabled": true,
-    "formatWithErrors": false,
     "indentStyle": "space",
-    "lineEnding": "lf",
-    "lineWidth": 120
-  },
-  "organizeImports": {
-    "enabled": true
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "lineEnding": "lf"
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "complexity": {
-        "noExcessiveCognitiveComplexity": "warn",
-        "noUselessStringConcat": "error"
-      },
-      "correctness": {
-        "noUnusedImports": "error",
-        "noUnusedPrivateClassMembers": "error",
-        "noUnusedVariables": "error"
-      }
+      "recommended": true
     }
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "lineWidth": 120,
-      "indentStyle": "space"
-    },
-    "globals": ["_", "window", "document", "navigator"],
+      "trailingCommas": "all",
+      "semicolons": "always"
+    }
+  },
+  "json": {
     "linter": {
       "enabled": true
     }
   },
-  "json": {
-    "formatter": {
-      "enabled": false
-    },
-    "linter": {
-      "enabled": true
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
     }
   }
 }

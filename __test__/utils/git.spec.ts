@@ -1,3 +1,5 @@
+import consola from 'consola';
+import { afterEach, describe, expect, test, vi } from 'vitest';
 import { isErr, isOk } from '@/types/result';
 import {
   createGitInitArgs,
@@ -7,8 +9,6 @@ import {
   promptForGitInitialization,
   validateGitInitParam,
 } from '@/utils/git';
-import consola from 'consola';
-import { afterEach, describe, expect, test, vi } from 'vitest';
 
 const { promptMock, xMock } = vi.hoisted(() => ({
   promptMock: vi.fn(),

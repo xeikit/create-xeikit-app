@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { mainCommand } from '@/cli/command';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { mainCommand } from '@/cli/command';
 
 // Hoisted mocks for better test isolation
 const {

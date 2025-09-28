@@ -1,7 +1,7 @@
 import consola from 'consola';
 import { x } from 'tinyexec';
 import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
+import { Err, isOk, Ok } from '../types/result';
 
 /**
  * Validates a git initialization parameter to ensure it's not undefined.

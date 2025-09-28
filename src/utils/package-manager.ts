@@ -1,7 +1,7 @@
 import consola, { type SelectPromptOptions } from 'consola';
-import { type PackageManagerName, installDependencies } from 'nypm';
+import { installDependencies, type PackageManagerName } from 'nypm';
 import type { Result } from '../types/result';
-import { Err, Ok, isOk } from '../types/result';
+import { Err, isOk, Ok } from '../types/result';
 import { handleError } from './common';
 import { PACKAGE_MANAGER_OPTIONS } from './constants';
 
